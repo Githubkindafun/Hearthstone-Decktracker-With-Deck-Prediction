@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    :root{
+      --pad: 4px;
+      --gap: 2px;
+      --headerH: 28px; /* Zwiększono do 28px (standard reszty) */
+
+      /* JS sets this in px */
+      --rowH: 14px;
+
+      /* Ujednolicone tło (ciemniejsze) */
+      --fade: rgba(20, 20, 20, 0.90);
+    }
+
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0);
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Transparent root */
+    .root{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 6px; /* Zwiększony gap (standard reszty) */
+      padding: var(--pad); /* Dodano padding do kontenera głównego */
+      box-sizing: border-box;
+    }
+
+    /* ===== Header row (ZMIANA: Styl prostokątny) ===== */
+    .headerRow{
+      height: var(--headerH);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--fade); /* Tło bezpośrednio tutaj */
+      border-radius: 4px;      /* Małe zaokrąglenie */
+      padding: 0 4px;
+      box-sizing: border-box;
+      flex: 0 0 auto;
+    }
+
+    /* Usunięto ::before (efekt pigułki) */
+
+    .headerText{
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.92);
+      user-select: none;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.55);
+    }
+
+    /* ===== Deck area ===== */
+    .deckFrame{
+      flex: 1 1 auto;
+      /* Padding usunięty stąd, bo jest w .root */
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #deckList{
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+      overflow-y: auto; /* Scrollowanie jeśli trzeba */
+      position: relative;
+      /* Usunięto tło z listy */
+    }
+
+    /* Usunięto ::before z #deckList */
+
+    .cardRow{
+      width: 100%;
+      height: var(--rowH);
+      display: flex;
+      align-items: stretch;
+      border-radius: 3px; /* Zmniejszono do 3px */
+      overflow: hidden;
+      padding: 0;
+      box-sizing: border-box;
+      /* Dodano margin-bottom zamiast gap w kontenerze dla spójności */
+      margin-bottom: 2px;
+    }
+    .cardRow:last-child { margin-bottom: 0; }
+
+    /* LEFT square = QTY / ★ */
+    .qtyLeft{
+      width: var(--rowH);
+      height: var(--rowH);
+      flex: 0 0 var(--rowH);
+      display: grid;
+      place-items: center;
+
+      background: rgba(70, 70, 70, 0.92);
+      color: rgba(245,245,245,1);
+      font-weight: 900;
+      font-size: clamp(10px, calc(var(--rowH) * 0.70), 18px);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+      user-select: none;
+    }
+    .qtyLeft.legendary{ color: #ffa500; text-shadow: 0 0 2px black; }
+
+    .imgWrap{
+      position: relative;
+      flex: 1 1 auto;
+      height: 100%;
+      overflow: hidden;
+      background: black; /* Tło dla obrazka */
+    }
+
+    .imgWrap img{
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* OVER IMAGE square = MANA (navy) */
+    .manaOver{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: var(--rowH);
+      height: var(--rowH);
+      display: grid;
+      place-items: center;
+      z-index: 2;
+
+      background: rgba(8, 32, 80, 0.95);
+      color: rgba(160, 220, 255, 1);
+      font-weight: 900;
+      font-size: clamp(10px, calc(var(--rowH) * 0.70), 18px);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .cardName {
+      position: absolute;
+      left: calc(var(--rowH) + 6px);
+      top: 0; bottom: 0;
+      display: flex;
+      align-items: center;
+      font-size: 11px;
+      color: white;
+      text-shadow: 0 1px 2px black;
+      white-space: nowrap;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .cardRow.isEmpty { opacity: 0.30; filter: grayscale(1) brightness(0.75); }
+
+    .emptyMsg{
+      padding: 8px;
+      background: rgba(0,0,0,0.15);
+      border-radius: 8px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.9);
+      text-align: center;
+    }
+
+    .cardTooltip{
+      position: fixed;
+      z-index: 999999;
+      pointer-events: none;
+      padding: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+    .cardTooltip.hidden{ display: none; }
+
+    .cardTooltip img{
+      display: block;
+      height: clamp(158px, calc(var(--rowH) * 12.96), 403px);
+      width: auto;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.45));
+      border-radius: 10px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="root">
+    <div class="headerRow">
+      <div class="headerText">YOUR DECK</div>
+    </div>
+
+    <div class="deckFrame">
+      <div id="deckList"></div>
+    </div>
+  </div>
+
+  <div id="cardTooltip" class="cardTooltip hidden">
+    <img id="cardTooltipImg" alt="" />
+  </div>
+
+  <script src="./overlay_renderer.js"></script>
+</body>
+</html>

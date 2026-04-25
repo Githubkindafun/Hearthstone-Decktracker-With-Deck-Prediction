@@ -1,0 +1,118 @@
+{
+  "id": "deck-test",
+  "name": "proto-priest",
+  "cards": [
+    {
+      "cardId": "106574",
+      "name": "Birdwatching",
+      "mana": 2,
+      "rarity": "RARE",
+      "qty": 2
+    },
+    {
+      "cardId": "106636",
+      "name": "Catch of the Day",
+      "mana": 1,
+      "rarity": "COMMON",
+      "qty": 2
+    },
+    {
+      "cardId": "113176",
+      "name": "Hallucination",
+      "mana": 1,
+      "rarity": "RARE",
+      "qty": 2
+    },
+    {
+      "cardId": "120786",
+      "name": "Power Word: Shield",
+      "mana": 1,
+      "rarity": "COMMON",
+      "qty": 2
+    },
+    {
+      "cardId": "110835",
+      "name": "Orbital Halo",
+      "mana": 2,
+      "rarity": "RARE",
+      "qty": 2
+    },
+    {
+      "cardId": "113168",
+      "name": "Photon Cannon",
+      "mana": 2,
+      "rarity": "COMMON",
+      "qty": 2
+    },
+    {
+      "cardId": "113738",
+      "name": "Sentry",
+      "mana": 2,
+      "rarity": "COMMON",
+      "qty": 2
+    },
+    {
+      "cardId": "66861",
+      "name": "Thrive in the Shadows",
+      "mana": 2,
+      "rarity": "RARE",
+      "qty": 2
+    },
+    {
+      "cardId": "108887",
+      "name": "Chillin' Vol'jin",
+      "mana": 3,
+      "rarity": "LEGENDARY",
+      "qty": 1
+    },
+    {
+      "cardId": "109323",
+      "name": "Trusty Fishing Rod",
+      "mana": 3,
+      "rarity": "COMMON",
+      "qty": 2
+    },
+    {
+      "cardId": "113733",
+      "name": "Void Ray",
+      "mana": 3,
+      "rarity": "RARE",
+      "qty": 2
+    },
+    {
+      "cardId": "117317",
+      "name": "Gravedawn Sunbloom",
+      "mana": 4,
+      "rarity": "COMMON",
+      "qty": 2
+    },
+    {
+      "cardId": "115139",
+      "name": "Nightmare Lord Xavius",
+      "mana": 4,
+      "rarity": "LEGENDARY",
+      "qty": 1
+    },
+    {
+      "cardId": "113163",
+      "name": "Chrono Boost",
+      "mana": 5,
+      "rarity": "COMMON",
+      "qty": 2
+    },
+    {
+      "cardId": "117557",
+      "name": "Resuscitate",
+      "mana": 6,
+      "rarity": "EPIC",
+      "qty": 2
+    },
+    {
+      "cardId": "113203",
+      "name": "Mothership",
+      "mana": 12,
+      "rarity": "EPIC",
+      "qty": 2
+    }
+  ]
+}

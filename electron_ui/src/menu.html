@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Menu</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 16px; }
+    h2 { margin: 0 0 6px 0; }
+
+    /* ✅ Status line placeholder (no logic yet) */
+    .statusLine {
+      margin: 0 0 14px 0;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid #eee;
+      background: #fafafa;
+      font-size: 13px;
+      color: #222;
+    }
+
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .card { border: 1px solid #ddd; border-radius: 10px; padding: 12px; }
+    .muted { color: #666; font-size: 12px; }
+
+    /* ✅ deck rows are boxed so we can highlight the whole row */
+    #deckList { display:flex; flex-direction:column; gap:10px; }
+
+    .deckRow{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:10px;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    /* ✅ selected deck highlight */
+    .deckRow.deckSelected {
+      border-color: rgba(0, 180, 0, 0.85);
+      background: rgba(0, 180, 0, 0.14);
+    }
+
+    .builderRow, .controlsRow { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:8px 0; border-bottom:1px dashed #eee; }
+
+    input, textarea { width:100%; padding:8px; }
+    textarea { resize: vertical; }
+    button { padding:8px 10px; cursor:pointer; }
+
+    #suggestions { display:flex; flex-direction:column; gap:6px; margin-top:6px; }
+    .suggestion { text-align:left; }
+
+    .controls { display:flex; align-items:center; gap:8px; }
+    .qty { min-width:60px; text-align:center; }
+  </style>
+</head>
+<body>
+  <h2>Decktracker Menu</h2>
+
+  <!-- ✅ placeholder only for now -->
+  <div id="statusLine" class="statusLine">Status: Waiting for backend...</div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Decks</h3>
+      <div id="deckList"></div>
+      <p class="muted">Ctrl+Shift+M toggles this window.</p>
+    </div>
+
+    <div class="card">
+      <h3>Add / Edit deck</h3>
+
+      <div id="editInfo" class="muted" style="margin-bottom:10px;"></div>
+
+      <label>Deck name</label>
+      <input id="deckName" placeholder="e.g. Control Mage" />
+
+      <label style="margin-top:10px; display:block;">Paste deck from HSReplay</label>
+      <textarea id="deckPaste" rows="6" placeholder="Paste deck from HSReplay"></textarea>
+      <div style="display:flex; gap:10px; margin-top:8px;">
+        <button id="importDeckBtn">Import</button>
+      </div>
+
+      <label style="margin-top:10px; display:block;">Add cards by name</label>
+      <input id="cardSearch" placeholder="Start typing..." />
+      <div id="suggestions"></div>
+
+      <h4 style="margin-top:12px;">Cards in deck</h4>
+      <div id="builderList"></div>
+
+      <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
+        <button id="saveDeckBtn">Save deck</button>
+        <button id="clearBtn">Clear</button>
+        <button id="cancelEditBtn" style="display:none;">Cancel edit</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./menu_renderer.js"></script>
+</body>
+</html>

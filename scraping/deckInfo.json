@@ -1,0 +1,575 @@
+{
+  "render_as": "table",
+  "series": {
+    "metadata": {
+      "DEATHKNIGHT": {},
+      "DEMONHUNTER": {},
+      "DRUID": {},
+      "HUNTER": {},
+      "MAGE": {},
+      "PALADIN": {},
+      "PRIEST": {},
+      "ROGUE": {},
+      "SHAMAN": {},
+      "WARLOCK": {},
+      "WARRIOR": {}
+    },
+    "data": {
+      "DEATHKNIGHT": [
+        {
+          "archetype_id": 663,
+          "total_games": 4140,
+          "pct_of_class": 4.91,
+          "pct_of_total": 0.47,
+          "win_rate": 48.59
+        },
+        {
+          "archetype_id": 557,
+          "total_games": 3889,
+          "pct_of_class": 4.62,
+          "pct_of_total": 0.45,
+          "win_rate": 54.35
+        },
+        {
+          "archetype_id": 714,
+          "total_games": 26582,
+          "pct_of_class": 31.58,
+          "pct_of_total": 3.05,
+          "win_rate": 54.95
+        },
+        {
+          "archetype_id": 649,
+          "total_games": 4304,
+          "pct_of_class": 5.11,
+          "pct_of_total": 0.49,
+          "win_rate": 41.72
+        },
+        {
+          "archetype_id": 693,
+          "total_games": 17587,
+          "pct_of_class": 20.89,
+          "pct_of_total": 2.02,
+          "win_rate": 53.54
+        },
+        {
+          "archetype_id": 772,
+          "total_games": 5566,
+          "pct_of_class": 6.61,
+          "pct_of_total": 0.64,
+          "win_rate": 51.52
+        },
+        {
+          "archetype_id": 837,
+          "total_games": 3027,
+          "pct_of_class": 3.59,
+          "pct_of_total": 0.35,
+          "win_rate": 35.84
+        },
+        {
+          "archetype_id": 808,
+          "total_games": 3527,
+          "pct_of_class": 4.19,
+          "pct_of_total": 0.4,
+          "win_rate": 53.52
+        },
+        {
+          "archetype_id": -1,
+          "total_games": 14757,
+          "pct_of_class": 17.53,
+          "pct_of_total": 1.69,
+          "win_rate": 35.23
+        }
+      ],
+      "DEMONHUNTER": [
+        {
+          "archetype_id": 838,
+          "total_games": 797,
+          "pct_of_class": 1.34,
+          "pct_of_total": 0.09,
+          "win_rate": 39.02
+        },
+        {
+          "archetype_id": 826,
+          "total_games": 7433,
+          "pct_of_class": 12.55,
+          "pct_of_total": 0.85,
+          "win_rate": 55.21
+        },
+        {
+          "archetype_id": 818,
+          "total_games": 17416,
+          "pct_of_class": 29.4,
+          "pct_of_total": 2.0,
+          "win_rate": 61.35
+        },
+        {
+          "archetype_id": 396,
+          "total_games": 4849,
+          "pct_of_class": 8.18,
+          "pct_of_total": 0.56,
+          "win_rate": 57.37
+        },
+        {
+          "archetype_id": 472,
+          "total_games": 1988,
+          "pct_of_class": 3.35,
+          "pct_of_total": 0.23,
+          "win_rate": 46.17
+        },
+        {
+          "archetype_id": 569,
+          "total_games": 13111,
+          "pct_of_class": 22.14,
+          "pct_of_total": 1.5,
+          "win_rate": 49.08
+        },
+        {
+          "archetype_id": 825,
+          "total_games": 2160,
+          "pct_of_class": 3.64,
+          "pct_of_total": 0.25,
+          "win_rate": 49.76
+        },
+        {
+          "archetype_id": 371,
+          "total_games": 4233,
+          "pct_of_class": 7.14,
+          "pct_of_total": 0.49,
+          "win_rate": 57.68
+        },
+        {
+          "archetype_id": -14,
+          "total_games": 7021,
+          "pct_of_class": 11.85,
+          "pct_of_total": 0.8,
+          "win_rate": 31.89
+        }
+      ],
+      "DRUID": [
+        {
+          "archetype_id": -2,
+          "total_games": 7424,
+          "pct_of_class": 20.57,
+          "pct_of_total": 0.85,
+          "win_rate": 31.55
+        },
+        {
+          "archetype_id": 149,
+          "total_games": 8346,
+          "pct_of_class": 23.13,
+          "pct_of_total": 0.96,
+          "win_rate": 50.82
+        },
+        {
+          "archetype_id": 835,
+          "total_games": 4919,
+          "pct_of_class": 13.63,
+          "pct_of_total": 0.56,
+          "win_rate": 49.29
+        },
+        {
+          "archetype_id": 827,
+          "total_games": 1160,
+          "pct_of_class": 3.21,
+          "pct_of_total": 0.13,
+          "win_rate": 44.74
+        },
+        {
+          "archetype_id": 150,
+          "total_games": 460,
+          "pct_of_class": 1.27,
+          "pct_of_total": 0.05,
+          "win_rate": 42.6
+        },
+        {
+          "archetype_id": 657,
+          "total_games": 9480,
+          "pct_of_class": 26.27,
+          "pct_of_total": 1.09,
+          "win_rate": 50.84
+        },
+        {
+          "archetype_id": 776,
+          "total_games": 4159,
+          "pct_of_class": 11.52,
+          "pct_of_total": 0.48,
+          "win_rate": 46.83
+        }
+      ],
+      "HUNTER": [
+        {
+          "archetype_id": 211,
+          "total_games": 2699,
+          "pct_of_class": 5.15,
+          "pct_of_total": 0.31,
+          "win_rate": 44.01
+        },
+        {
+          "archetype_id": 720,
+          "total_games": 11923,
+          "pct_of_class": 22.78,
+          "pct_of_total": 1.37,
+          "win_rate": 50.84
+        },
+        {
+          "archetype_id": -3,
+          "total_games": 9239,
+          "pct_of_class": 17.65,
+          "pct_of_total": 1.06,
+          "win_rate": 34.65
+        },
+        {
+          "archetype_id": 841,
+          "total_games": 6439,
+          "pct_of_class": 12.3,
+          "pct_of_total": 0.74,
+          "win_rate": 34.38
+        },
+        {
+          "archetype_id": 355,
+          "total_games": 17316,
+          "pct_of_class": 33.08,
+          "pct_of_total": 1.98,
+          "win_rate": 53.13
+        },
+        {
+          "archetype_id": 170,
+          "total_games": 4720,
+          "pct_of_class": 9.01,
+          "pct_of_total": 0.54,
+          "win_rate": 52.43
+        }
+      ],
+      "MAGE": [
+        {
+          "archetype_id": 144,
+          "total_games": 8457,
+          "pct_of_class": 8.12,
+          "pct_of_total": 0.97,
+          "win_rate": 44.12
+        },
+        {
+          "archetype_id": 142,
+          "total_games": 19324,
+          "pct_of_class": 18.56,
+          "pct_of_total": 2.21,
+          "win_rate": 45.02
+        },
+        {
+          "archetype_id": 561,
+          "total_games": 11048,
+          "pct_of_class": 10.61,
+          "pct_of_total": 1.27,
+          "win_rate": 30.88
+        },
+        {
+          "archetype_id": -4,
+          "total_games": 12198,
+          "pct_of_class": 11.72,
+          "pct_of_total": 1.4,
+          "win_rate": 29.16
+        },
+        {
+          "archetype_id": 751,
+          "total_games": 29493,
+          "pct_of_class": 28.33,
+          "pct_of_total": 3.38,
+          "win_rate": 52.98
+        },
+        {
+          "archetype_id": 145,
+          "total_games": 18618,
+          "pct_of_class": 17.88,
+          "pct_of_total": 2.13,
+          "win_rate": 57.91
+        },
+        {
+          "archetype_id": 780,
+          "total_games": 4333,
+          "pct_of_class": 4.16,
+          "pct_of_total": 0.5,
+          "win_rate": 49.8
+        }
+      ],
+      "PALADIN": [
+        {
+          "archetype_id": -5,
+          "total_games": 8863,
+          "pct_of_class": 7.27,
+          "pct_of_total": 1.02,
+          "win_rate": 37.53
+        },
+        {
+          "archetype_id": 79,
+          "total_games": 18760,
+          "pct_of_class": 15.4,
+          "pct_of_total": 2.15,
+          "win_rate": 53.14
+        },
+        {
+          "archetype_id": 654,
+          "total_games": 41766,
+          "pct_of_class": 34.28,
+          "pct_of_total": 4.79,
+          "win_rate": 59.14
+        },
+        {
+          "archetype_id": 595,
+          "total_games": 8214,
+          "pct_of_class": 6.74,
+          "pct_of_total": 0.94,
+          "win_rate": 54.91
+        },
+        {
+          "archetype_id": 782,
+          "total_games": 14194,
+          "pct_of_class": 11.65,
+          "pct_of_total": 1.63,
+          "win_rate": 49.79
+        },
+        {
+          "archetype_id": 171,
+          "total_games": 30020,
+          "pct_of_class": 24.64,
+          "pct_of_total": 3.44,
+          "win_rate": 59.91
+        }
+      ],
+      "PRIEST": [
+        {
+          "archetype_id": 806,
+          "total_games": 932,
+          "pct_of_class": 1.62,
+          "pct_of_total": 0.11,
+          "win_rate": 44.84
+        },
+        {
+          "archetype_id": 36,
+          "total_games": 5572,
+          "pct_of_class": 9.71,
+          "pct_of_total": 0.64,
+          "win_rate": 43.77
+        },
+        {
+          "archetype_id": -6,
+          "total_games": 9894,
+          "pct_of_class": 17.25,
+          "pct_of_total": 1.13,
+          "win_rate": 36.01
+        },
+        {
+          "archetype_id": 658,
+          "total_games": 6487,
+          "pct_of_class": 11.31,
+          "pct_of_total": 0.74,
+          "win_rate": 51.16
+        },
+        {
+          "archetype_id": 753,
+          "total_games": 20284,
+          "pct_of_class": 35.38,
+          "pct_of_total": 2.32,
+          "win_rate": 54.39
+        },
+        {
+          "archetype_id": 56,
+          "total_games": 3240,
+          "pct_of_class": 5.65,
+          "pct_of_total": 0.37,
+          "win_rate": 42.31
+        },
+        {
+          "archetype_id": 783,
+          "total_games": 10917,
+          "pct_of_class": 19.04,
+          "pct_of_total": 1.25,
+          "win_rate": 44.05
+        }
+      ],
+      "ROGUE": [
+        {
+          "archetype_id": 276,
+          "total_games": 5532,
+          "pct_of_class": 4.32,
+          "pct_of_total": 0.63,
+          "win_rate": 41.86
+        },
+        {
+          "archetype_id": 799,
+          "total_games": 3692,
+          "pct_of_class": 2.88,
+          "pct_of_total": 0.42,
+          "win_rate": 50.94
+        },
+        {
+          "archetype_id": 737,
+          "total_games": 4398,
+          "pct_of_class": 3.43,
+          "pct_of_total": 0.5,
+          "win_rate": 46.83
+        },
+        {
+          "archetype_id": -7,
+          "total_games": 18018,
+          "pct_of_class": 14.09,
+          "pct_of_total": 2.07,
+          "win_rate": 35.08
+        },
+        {
+          "archetype_id": 790,
+          "total_games": 8001,
+          "pct_of_class": 6.25,
+          "pct_of_total": 0.92,
+          "win_rate": 50.49
+        },
+        {
+          "archetype_id": 842,
+          "total_games": 88204,
+          "pct_of_class": 68.97,
+          "pct_of_total": 10.11,
+          "win_rate": 51.5
+        }
+      ],
+      "SHAMAN": [
+        {
+          "archetype_id": 755,
+          "total_games": 1442,
+          "pct_of_class": 2.46,
+          "pct_of_total": 0.17,
+          "win_rate": 44.86
+        },
+        {
+          "archetype_id": 449,
+          "total_games": 6309,
+          "pct_of_class": 10.77,
+          "pct_of_total": 0.72,
+          "win_rate": 48.26
+        },
+        {
+          "archetype_id": 202,
+          "total_games": 1461,
+          "pct_of_class": 2.49,
+          "pct_of_total": 0.17,
+          "win_rate": 43.66
+        },
+        {
+          "archetype_id": -8,
+          "total_games": 6470,
+          "pct_of_class": 11.05,
+          "pct_of_total": 0.74,
+          "win_rate": 37.41
+        },
+        {
+          "archetype_id": 26,
+          "total_games": 33495,
+          "pct_of_class": 57.2,
+          "pct_of_total": 3.84,
+          "win_rate": 58.06
+        },
+        {
+          "archetype_id": 306,
+          "total_games": 3284,
+          "pct_of_class": 5.6,
+          "pct_of_total": 0.38,
+          "win_rate": 42.66
+        },
+        {
+          "archetype_id": 61,
+          "total_games": 3109,
+          "pct_of_class": 5.3,
+          "pct_of_total": 0.36,
+          "win_rate": 42.13
+        },
+        {
+          "archetype_id": 726,
+          "total_games": 2980,
+          "pct_of_class": 5.08,
+          "pct_of_total": 0.34,
+          "win_rate": 42.61
+        }
+      ],
+      "WARLOCK": [
+        {
+          "archetype_id": 786,
+          "total_games": 3779,
+          "pct_of_class": 5.59,
+          "pct_of_total": 0.43,
+          "win_rate": 47.23
+        },
+        {
+          "archetype_id": 831,
+          "total_games": 12970,
+          "pct_of_class": 19.2,
+          "pct_of_total": 1.49,
+          "win_rate": 49.62
+        },
+        {
+          "archetype_id": 307,
+          "total_games": 2113,
+          "pct_of_class": 3.12,
+          "pct_of_total": 0.24,
+          "win_rate": 35.16
+        },
+        {
+          "archetype_id": 817,
+          "total_games": 4498,
+          "pct_of_class": 6.65,
+          "pct_of_total": 0.52,
+          "win_rate": 49.97
+        },
+        {
+          "archetype_id": 843,
+          "total_games": 1373,
+          "pct_of_class": 2.03,
+          "pct_of_total": 0.16,
+          "win_rate": 15.07
+        },
+        {
+          "archetype_id": 832,
+          "total_games": 33434,
+          "pct_of_class": 49.49,
+          "pct_of_total": 3.83,
+          "win_rate": 48.14
+        },
+        {
+          "archetype_id": -9,
+          "total_games": 9380,
+          "pct_of_class": 13.88,
+          "pct_of_total": 1.08,
+          "win_rate": 33.13
+        }
+      ],
+      "WARRIOR": [
+        {
+          "archetype_id": 162,
+          "total_games": 29365,
+          "pct_of_class": 28.36,
+          "pct_of_total": 3.37,
+          "win_rate": 54.25
+        },
+        {
+          "archetype_id": 328,
+          "total_games": 1840,
+          "pct_of_class": 1.77,
+          "pct_of_total": 0.21,
+          "win_rate": 45.16
+        },
+        {
+          "archetype_id": 19,
+          "total_games": 61178,
+          "pct_of_class": 59.09,
+          "pct_of_total": 7.01,
+          "win_rate": 60.53
+        },
+        {
+          "archetype_id": -10,
+          "total_games": 11137,
+          "pct_of_class": 10.75,
+          "pct_of_total": 1.28,
+          "win_rate": 32.06
+        }
+      ]
+    }
+  },
+  "as_of": "2026-01-19T16:53:30Z"
+}

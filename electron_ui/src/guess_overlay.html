@@ -1,0 +1,290 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    :root {
+      --pad: 4px;
+      --gap: 2px;
+      --rowH: 18px;
+      --fade: rgba(20, 20, 20, 0.90);
+      --accent: rgba(70, 0, 0, 0.85);
+      --text-gray: #aaa;
+    }
+
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0);
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      color: white;
+      user-select: none;
+    }
+
+    .root {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      height: 100%;
+      padding: var(--pad);
+      box-sizing: border-box;
+    }
+
+    /* === Header Carousel === */
+    .headerContainer {
+      background: var(--fade);
+      border-radius: 4px;
+      /* ZMIANA: Wysokość auto, żeby zmieścić dwa rzędy (tytuł + strzałki) */
+      height: auto;
+      min-height: 28px;
+      display: flex;
+      /* ZMIANA: Układ kolumnowy - Tytuł nad strzałkami */
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 8px;
+      gap: 4px;
+      box-sizing: border-box;
+      flex: 0 0 auto;
+    }
+
+    .navRow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      width: 100%;
+      padding: 0 4px;
+      box-sizing: border-box;
+    }
+
+    .deckTitle {
+      font-size: 12px; /* Lekko powiększone dla czytelności */
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: rgba(255, 200, 200, 1);
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%; /* Teraz może zająć całą szerokość */
+      margin-bottom: 2px;
+    }
+
+    .pageCounter {
+      font-size: 13px;
+      color: white;
+      white-space: nowrap;
+      margin-right: 4px;
+      /* ZMIANA: Pogrubienie czcionki, żeby pasowało do reszty UI */
+      font-weight: 800;
+      font-family: Arial, sans-serif;
+    }
+
+    .navBtn {
+      width: 24px;
+      height: 20px;
+      border-radius: 4px;
+      display: grid;
+      font-size: 18px;
+      cursor: pointer;
+      color: #888;
+      background: rgba(0,0,0,0.25);
+      place-items: center;
+      padding: 0 4px;
+      font-weight: 900;
+      transition: color 0.2s;
+      user-select: none;
+    }
+    .navBtn:hover { color: white; text-shadow: 0 0 5px white; }
+    .navBtn.disabled { opacity: 0.3; pointer-events: none; }
+
+    /* === Content Area === */
+    #contentArea {
+      display: flex;
+      flex-direction: column;
+      flex: 1;         
+      min-height: 0;   
+      gap: 4px;        
+    }
+
+    /* === Core Cards === */
+    .coreCardsList {
+      flex: 1;         
+      overflow-y: auto; 
+      min-height: 0;   
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+      padding-right: 2px;
+      box-sizing: border-box;
+    }
+
+    .cardRow {
+      height: var(--rowH);
+      display: flex;
+      align-items: stretch;
+      border-radius: 3px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 2px;
+    }
+    .cardRow:last-child {
+      margin-bottom: 0;
+    }
+
+    .imgWrap {
+      position: relative;
+      flex: 1;
+      background: black;
+      overflow: hidden;
+    }
+    .imgWrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .manaOver {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: var(--rowH);
+      height: var(--rowH);
+      background: rgba(8, 32, 80, 0.95);
+      color: #a0dcff;
+      font-weight: 900;
+      font-size: clamp(10px, calc(var(--rowH) * 0.70), 18px);
+      display: grid;
+      place-items: center;
+      z-index: 2;
+    }
+
+    .qtyLeft {display: none !important;}
+
+    .cardName {
+      position: absolute;
+      left: calc(var(--rowH) + 6px); top: 0; bottom: 0;
+      display: flex;
+      align-items: center;
+      font-size: 11px;
+      text-shadow: 0 1px 2px black;
+      z-index: 2;
+      white-space: nowrap;
+      color: white;
+    }
+
+    /* === Stats Box === */
+    .statsBox {
+      background: var(--fade);
+      border-radius: 6px;
+      box-sizing: border-box;
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 8px;
+      flex: 0 0 auto; 
+      
+      /* Grid Layout */
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 12px;
+    }
+
+    .statItem {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start; 
+    }
+
+    .statLabel {
+      color: #888;
+      font-size: 10px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 1px;
+      letter-spacing: 0.6px;
+    }
+
+    .statVal {
+      font-weight: 900;
+      font-size: 15px;
+      color: #eee;
+    }
+
+    .loadingMsg {
+      padding: 20px; text-align: center; color: #888; font-size: 12px; font-style: italic;
+      flex: 1; display: flex; align-items: center; justify-content: center; /* Wyśrodkowanie komunikatu ładowania */
+    }
+    
+    .hidden { display: none !important; }
+
+    .cardTooltip{
+      position: fixed;
+      z-index: 999999;
+      pointer-events: none;
+      padding: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+    .cardTooltip.hidden{ display: none; }
+
+    .cardTooltip img{
+      display: block;
+      height: clamp(142px, calc(var(--rowH) * 11.7), 363px);
+      width: auto;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.45));
+      border-radius: 10px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="root">
+    
+    <div class="headerContainer" id="headerBox">
+      <div class="deckTitle" id="deckName">WAITING...</div>
+      
+      <div class="navRow">
+        <div class="navBtn" id="btnPrev">◀</div>
+        <div class="pageCounter" id="pageCounter">- / -</div>
+        <div class="navBtn" id="btnNext">▶</div>
+      </div>
+    </div>
+
+    <div id="contentArea" class="hidden">
+      <div class="coreCardsList" id="coreCardsList"></div>
+
+      <div class="statsBox">
+        <div class="statItem">
+            <span class="statLabel">Winrate</span>
+            <span class="statVal" id="statWR">-</span>
+        </div>
+        <div class="statItem">
+            <span class="statLabel">Total Games</span>
+            <span class="statVal" id="statDur">-</span>
+        </div>
+        
+        <div class="statItem">
+            <span class="statLabel">Popularity</span>
+            <span class="statVal" id="statPop">-</span>
+        </div>
+        <div class="statItem">
+            <span class="statLabel">Turns / Game</span>
+            <span class="statVal" id="statTurns">-</span>
+        </div>
+      </div>
+    </div>
+    
+    <div id="loadingArea" class="loadingMsg">Waiting for opponent cards...</div>
+
+    <div id="cardTooltip" class="cardTooltip hidden">
+      <img id="cardTooltipImg" alt="" />
+    </div>
+
+  </div>
+
+  <script src="./guess_renderer.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+digraph deps {
+  graph [
+    rankdir=LR,
+    splines=ortho,
+    nodesep=0.8,
+    ranksep=1.1,
+    overlap=false,
+    sep=0.4,
+    bgcolor="white",
+    pad="0.3",
+    fontname="Segoe UI",
+    fontsize=12,
+    labelloc="t",
+    label="Hearthstone-Decktracker Dependencies",
+    concentrate=false
+  ];
+  node [
+    shape=box,
+    style="rounded,filled",
+    fillcolor="white",
+    color="#4b5563",
+    fontname="Consolas",
+    fontsize=10,
+    penwidth=1.2
+  ];
+  edge [color="#9ca3af", arrowsize=0.7, penwidth=1.0, minlen=2];
+
+  subgraph cluster_entry {
+    label="entry";
+    color="#d1d5db";
+    fontcolor="#374151";
+    style="rounded,filled";
+    fillcolor="#f9fafb";
+    node [fillcolor="#fef3c7"];
+    "app";
+    "app::run";
+  }
+
+  subgraph cluster_deck {
+    label="deck";
+    color="#93c5fd";
+    fontcolor="#1f2937";
+    style="rounded,filled";
+    fillcolor="#eff6ff";
+    node [fillcolor="#e0f2fe"];
+    "deck.deck_assets";
+    "deck.deck_guessing";
+    "deck.deck_assets::DeckAssets";
+    "deck.deck_assets::ensure_card_tile";
+    "deck.deck_assets::download_deck_images";
+    "deck.deck_guessing::DeckGuessing";
+    "deck.deck_guessing::update_guess";
+  }
+
+  subgraph cluster_formatting {
+    label="formatting";
+    color="#fdba74";
+    fontcolor="#1f2937";
+    style="rounded,filled";
+    fillcolor="#fff7ed";
+    node [fillcolor="#ffedd5"];
+    "formatting.format_message";
+  }
+
+  subgraph cluster_frontend {
+    label="frontend";
+    color="#86efac";
+    fontcolor="#1f2937";
+    style="rounded,filled";
+    fillcolor="#f0fdf4";
+    node [fillcolor="#dcfce7"];
+    "frontend.frontend_adapter";
+    "frontend.frontend_bridge";
+    "frontend.frontend_adapter::FrontendAdapter";
+    "frontend.frontend_adapter::send_game_state";
+    "frontend.frontend_adapter::send_round_update";
+    "frontend.frontend_bridge::FrontendBridge";
+    "frontend.frontend_bridge::send";
+  }
+
+  subgraph cluster_game {
+    label="game";
+    color="#c4b5fd";
+    fontcolor="#1f2937";
+    style="rounded,filled";
+    fillcolor="#f5f3ff";
+    node [fillcolor="#ede9fe"];
+    "game.game_session";
+    "game.round_tracker";
+    "game.game_session::GameSession";
+    "game.game_session::handle_power_line";
+    "game.game_session::handle_zone_line";
+    "game.round_tracker::RoundTracker";
+    "game.round_tracker::handle_power_line";
+    "game.round_tracker::handle_zone_line";
+    "game.round_tracker::build_round_summary";
+  }
+
+  subgraph cluster_logs {
+    label="logs";
+    color="#fda4af";
+    fontcolor="#1f2937";
+    style="rounded,filled";
+    fillcolor="#fff1f2";
+    node [fillcolor="#ffe4e6"];
+    "logs.log_stream";
+    "logs.log_stream::iter_merged_logs";
+    "logs.log_stream::wait_for_logs";
+  }
+
+  subgraph cluster_log_analysis {
+    label="log_analysis";
+    color="#a5b4fc";
+    fontcolor="#1f2937";
+    style="rounded,filled";
+    fillcolor="#eef2ff";
+    node [fillcolor="#e0e7ff"];
+    "log_analysis.decktracker";
+    "log_analysis.log_paths";
+    "log_analysis.decktracker::Card";
+    "log_analysis.decktracker::get_payload";
+    "log_analysis.decktracker::Tracker";
+    "log_analysis.decktracker::handle_event";
+    "log_analysis.decktracker::process_line";
+  }
+
+  subgraph cluster_scraping {
+    label="scraping";
+    color="#fde68a";
+    fontcolor="#1f2937";
+    style="rounded,filled";
+    fillcolor="#fffbeb";
+    node [fillcolor="#fef9c3"];
+    "scraping.Scrap";
+  }
+
+  { rank=min; "app"; }
+
+  "app" [label="app\n(entrypoint)"];
+  "app::run" [label="run()\n(main loop)", shape=note, fillcolor="white", color="#9ca3af", fontsize=9];
+  "deck.deck_assets" [label="deck_assets\n(tile assets)"];
+  "deck.deck_guessing" [label="deck_guessing\n(predictions)"];
+  "deck.deck_assets::DeckAssets" [label="DeckAssets\n(image cache)", shape=component, fillcolor="white", color="#6b7280", fontsize=9];
+  "deck.deck_assets::ensure_card_tile" [label="ensure_card_tile()\n(fetch if missing)", shape=note, fillcolor="white", color="#9ca3af", fontsize=9];
+  "deck.deck_assets::download_deck_images" [label="download_deck_images()\n(deck batch)", shape=note, fillcolor="white", color="#9ca3af", fontsize=9];
+  "deck.deck_guessing::DeckGuessing" [label="DeckGuessing\n(opponent deck)", shape=component, fillcolor="white", color="#6b7280", fontsize=9];
+  "deck.deck_guessing::update_guess" [label="update_guess()\n(new prediction)", shape=note, fillcolor="white", color="#9ca3af", fontsize=9];
+  "formatting.format_message" [label="format_message\n(payload/summary)"];
+  "frontend.frontend_adapter" [label="frontend_adapter\n(state->UI)"];
+  "frontend.frontend_bridge" [label="frontend_bridge\n(socket server)"];
+  "frontend.frontend_adapter::FrontendAdapter" [label="FrontendAdapter\n(UI adapter)", shape=component, fillcolor="white", color="#6b7280", fontsize=9];
+  "frontend.frontend_adapter::send_game_state" [label="send_game_state()\n(snapshot)", shape=note, fillcolor="white", color="#9ca3af", fontsize=9];
+  "frontend.frontend_adapter::send_round_update" [label="send_round_update()\n(round delta)", shape=note, fillcolor="white", color="#9ca3af", fontsize=9];
+  "frontend.frontend_bridge::FrontendBridge" [label="FrontendBridge\n(socket hub)", shape=component, fillcolor="white", color="#6b7280", fontsize=9];
+  "frontend.frontend_bridge::send" [label="send()\n(push JSON)", shape=note, fillcolor="white", color="#9ca3af", fontsize=9];
+  "game.game_session" [label="game_session\n(orchestrator)"];
+  "game.round_tracker" [label="round_tracker\n(state tracking)"];
+  "game.game_session::GameSession" [label="GameSession\n(orchestrator)", shape=component, fillcolor="white", color="#6b7280", fontsize=9];
+  "game.game_session::handle_power_line" [label="handle_power_line()\n(Power.log)", shape=note, fillcolor="white", color="#9ca3af", fontsize=9];
+  "game.game_session::handle_zone_line" [label="handle_zone_line()\n(Zone.log)", shape=note, fillcolor="white", color="#9ca3af", fontsize=9];
+  "game.round_tracker::RoundTracker" [label="RoundTracker\n(round state)", shape=component, fillcolor="white", color="#6b7280", fontsize=9];
+  "game.round_tracker::handle_power_line" [label="handle_power_line()\n(Power.log)", shape=note, fillcolor="white", color="#9ca3af", fontsize=9];
+  "game.round_tracker::handle_zone_line" [label="handle_zone_line()\n(apply event)", shape=note, fillcolor="white", color="#9ca3af", fontsize=9];
+  "game.round_tracker::build_round_summary" [label="build_round_summary()\n(debug)", shape=note, fillcolor="white", color="#9ca3af", fontsize=9];
+  "logs.log_stream" [label="log_stream\n(tail/merge)"];
+  "logs.log_stream::iter_merged_logs" [label="iter_merged_logs()\n(merge)", shape=note, fillcolor="white", color="#9ca3af", fontsize=9];
+  "logs.log_stream::wait_for_logs" [label="wait_for_logs()\n(block)", shape=note, fillcolor="white", color="#9ca3af", fontsize=9];
+  "log_analysis.decktracker" [label="decktracker\n(model/parsing)"];
+  "log_analysis.log_paths" [label="log_paths\n(locations)"];
+  "log_analysis.decktracker::Card" [label="Card\n(state model)", shape=component, fillcolor="white", color="#6b7280", fontsize=9];
+  "log_analysis.decktracker::get_payload" [label="get_payload()\n(UI payload)", shape=note, fillcolor="white", color="#9ca3af", fontsize=9];
+  "log_analysis.decktracker::Tracker" [label="Tracker\n(match state)", shape=component, fillcolor="white", color="#6b7280", fontsize=9];
+  "log_analysis.decktracker::handle_event" [label="handle_event()\n(apply event)", shape=note, fillcolor="white", color="#9ca3af", fontsize=9];
+  "log_analysis.decktracker::process_line" [label="process_line()\n(parse log)", shape=note, fillcolor="white", color="#9ca3af", fontsize=9];
+  "scraping.Scrap" [label="Scrap\n(fetch data)"];
+
+  "app" -> "frontend.frontend_bridge";
+  "app" -> "game.game_session";
+  "app" -> "log_analysis.log_paths";
+  "app" -> "logs.log_stream";
+  "app" -> "app::run" [style=dashed, color="#cbd5e1"];
+  "deck.deck_assets" -> "scraping.Scrap";
+  "deck.deck_guessing" -> "formatting.format_message";
+  "deck.deck_guessing" -> "log_analysis.decktracker";
+  "deck.deck_guessing" -> "scraping.Scrap";
+  "deck.deck_assets" -> "deck.deck_assets::DeckAssets" [style=dashed, color="#cbd5e1"];
+  "deck.deck_assets::DeckAssets" -> "deck.deck_assets::ensure_card_tile" [style=dotted, color="#cbd5e1"];
+  "deck.deck_assets::DeckAssets" -> "deck.deck_assets::download_deck_images" [style=dotted, color="#cbd5e1"];
+  "deck.deck_guessing" -> "deck.deck_guessing::DeckGuessing" [style=dashed, color="#cbd5e1"];
+  "deck.deck_guessing::DeckGuessing" -> "deck.deck_guessing::update_guess" [style=dotted, color="#cbd5e1"];
+  "formatting.format_message" -> "log_analysis.decktracker";
+  "formatting.format_message" -> "scraping.Scrap";
+  "frontend.frontend_adapter" -> "deck.deck_assets";
+  "frontend.frontend_adapter" -> "formatting.format_message";
+  "frontend.frontend_adapter" -> "frontend.frontend_bridge";
+  "frontend.frontend_adapter" -> "log_analysis.decktracker";
+  "frontend.frontend_adapter" -> "frontend.frontend_adapter::FrontendAdapter" [style=dashed, color="#cbd5e1"];
+  "frontend.frontend_adapter::FrontendAdapter" -> "frontend.frontend_adapter::send_game_state" [style=dotted, color="#cbd5e1"];
+  "frontend.frontend_adapter::FrontendAdapter" -> "frontend.frontend_adapter::send_round_update" [style=dotted, color="#cbd5e1"];
+  "frontend.frontend_bridge" -> "frontend.frontend_bridge::FrontendBridge" [style=dashed, color="#cbd5e1"];
+  "frontend.frontend_bridge::FrontendBridge" -> "frontend.frontend_bridge::send" [style=dotted, color="#cbd5e1"];
+  "game.game_session" -> "deck.deck_assets";
+  "game.game_session" -> "deck.deck_guessing";
+  "game.game_session" -> "frontend.frontend_adapter";
+  "game.game_session" -> "game.round_tracker";
+  "game.game_session" -> "log_analysis.decktracker";
+  "game.round_tracker" -> "formatting.format_message";
+  "game.round_tracker" -> "log_analysis.decktracker";
+  "game.round_tracker" -> "scraping.Scrap";
+  "game.game_session" -> "game.game_session::GameSession" [style=dashed, color="#cbd5e1"];
+  "game.game_session::GameSession" -> "game.game_session::handle_power_line" [style=dotted, color="#cbd5e1"];
+  "game.game_session::GameSession" -> "game.game_session::handle_zone_line" [style=dotted, color="#cbd5e1"];
+  "game.round_tracker" -> "game.round_tracker::RoundTracker" [style=dashed, color="#cbd5e1"];
+  "game.round_tracker::RoundTracker" -> "game.round_tracker::handle_power_line" [style=dotted, color="#cbd5e1"];
+  "game.round_tracker::RoundTracker" -> "game.round_tracker::handle_zone_line" [style=dotted, color="#cbd5e1"];
+  "game.round_tracker::RoundTracker" -> "game.round_tracker::build_round_summary" [style=dotted, color="#cbd5e1"];
+  "logs.log_stream" -> "logs.log_stream::iter_merged_logs" [style=dashed, color="#cbd5e1"];
+  "logs.log_stream" -> "logs.log_stream::wait_for_logs" [style=dashed, color="#cbd5e1"];
+  "log_analysis.decktracker" -> "log_analysis.decktracker::Card" [style=dashed, color="#cbd5e1"];
+  "log_analysis.decktracker::Card" -> "log_analysis.decktracker::get_payload" [style=dotted, color="#cbd5e1"];
+  "log_analysis.decktracker" -> "log_analysis.decktracker::Tracker" [style=dashed, color="#cbd5e1"];
+  "log_analysis.decktracker::Tracker" -> "log_analysis.decktracker::handle_event" [style=dotted, color="#cbd5e1"];
+  "log_analysis.decktracker" -> "log_analysis.decktracker::process_line" [style=dashed, color="#cbd5e1"];
+}

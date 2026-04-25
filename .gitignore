@@ -1,0 +1,28 @@
+# ===== Python =====
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+
+# ===== Node / Electron =====
+**/node_modules/
+**/dist/
+**/out/
+**/*.log
+
+# caches
+**/.cache/
+**/.parcel-cache/
+**/.vite/
+**/.npm/
+**/.yarn/
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# ===== Project-specific (optional) =====
+# jeśli będziesz trzymał lokalnie pobrane obrazki kart:
+**/cards/
+**/card_images/
