@@ -1,7 +1,7 @@
 # Project  
 
 ## Aktualności
-Aktualnie trwają prace konserwacyjne $\to$ szukanie bugów i ich naprawianie
+Projekt skonczony, tworzony przez: M1KKI47, Wlodarz03, Githubkindafun, JanKamyk.
 
 ## Overview
 W ramach projektu tworzymy deck tracker do Hearthston'a z dodatkowymi funkcjonalnościami. 
