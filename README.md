@@ -4,7 +4,7 @@
 Projekt skonczony, tworzony przez: M1KKI47, Wlodarz03, Githubkindafun, JanKamyk.
 
 ## Overview
-W ramach projektu tworzymy deck tracker do Hearthston'a z dodatkowymi funkcjonalnościami. 
+W ramach projektu tworzymy deck tracker do Hearthstone'a z dodatkowymi funkcjonalnościami. 
 Do śledzenia kart wykorzystujemy logi zapisywane przez silnik gry.
 
 Na ten moment decktracker posiada:
